@@ -53,4 +53,40 @@ class Solution(object):
         else:
             output = False
             return output
-                
+        
+    def isHappy(self, n):
+        """
+        :type n: int
+        :rtype: bool
+        """
+
+        self.n = n
+
+        track_list = []
+        while True:
+            # obtain a list of square elements
+            n_str = str(n)
+            n_list = []
+            for i in range(len(n_str)):
+               n_int = int(n_str[i])
+               n_int_sq = n_int**2
+               n_list.append(n_int_sq)
+
+            # add squared elements
+            add = sum(n_list)
+            track_list.append(add)
+
+            if add == 1:
+                output = True
+                return output
+            else:
+                for elem in track_list:
+                    if track_list.count(elem) > 1:
+                        output = False
+                        return output
+
+            # update n
+            n = add
+
+
+                   
