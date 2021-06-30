@@ -128,4 +128,23 @@ class Solution(object):
             return output
 
 
+    def firstUniqChar(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        
+        self.s = s
+
+        output = -1
+        for i in s:
+            count = s.count(i)
+            if count == 1:
+                output = i
+                break
+
+        if output != -1:
+            output = s.index(output)
+        return output
+
                    
