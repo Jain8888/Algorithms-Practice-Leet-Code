@@ -87,6 +87,45 @@ class Solution(object):
 
             # update n
             n = add
+            
+    def longestCommonPrefix(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: str
+        """
+        
+        self.strs = strs
+
+        # cases
+        if strs == []:
+            output = ''
+            return output
+        elif len(strs) == 1:
+            output = strs[0]
+            return output
+        else:
+            word = strs[0]
+            common = []
+            for i in range(len(strs)-1):
+                out = []
+                for letter in range(len(word)):
+                    string = strs[i+1]
+                    if len(string) > letter:
+                        if word[letter] == string[letter]:
+                            out.append(word[letter])
+                        else:
+                            break
+                    else:
+                        continue
+                common_join = ''.join(out)
+                common.append(common_join)
+
+            length_letters = []
+            for letters in common:
+                length_letters.append(len(letters))
+            index_min = length_letters.index(min(length_letters))
+            output = common[index_min]
+            return output
 
 
                    
