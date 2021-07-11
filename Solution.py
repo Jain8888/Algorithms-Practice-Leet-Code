@@ -146,5 +146,42 @@ class Solution(object):
         if output != -1:
             output = s.index(output)
         return output
+    
+    
+    def lengthOfLastWord(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        self.s = s
+
+        # plan - iterate from end to look for first letter, then start count and look for a space 
+
+        # case when inout is all spaces
+        if s.count(' ') == len(s):
+            output = 0
+            return output
+
+        elif s != '':
+            # iterate to get index of first letter from the end
+            index_of_first_letter = 1
+            for i in range(1,len(s)+1):
+                i = -(i)
+                letter = s[i]
+                if letter != ' ':
+                    index_of_first_letter = i
+
+                    count = 0
+                    for j in range(-index_of_first_letter,len(s)+1):
+                        j = -(j)
+                        letter = s[j]
+                        if letter == ' ':
+                            break
+                        else:
+                            count += 1
+                    output = count
+                    return count
+                    break
+
 
                    
