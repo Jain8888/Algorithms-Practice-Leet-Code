@@ -185,3 +185,29 @@ class Solution(object):
 
 
                    
+    def climbStairs(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        
+        # sum =  1 + (n-1)C1 + (n-2)C2 + .....
+        
+        def factorial(x):
+            fact = 1
+            for i in range(1,x+1):
+                fact = fact * i
+            return fact
+
+        def combination(n,r):
+            out = factorial(n)/(factorial(r)*(factorial(n-r)))
+            return out
+
+        self.n = n
+        r = 0
+        sum = 0
+        while n >= r:
+            sum = sum + combination(n,r)
+            n = n-1
+            r = r+1
+        return sum
