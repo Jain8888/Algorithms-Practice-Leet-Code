@@ -211,3 +211,20 @@ class Solution(object):
             n = n-1
             r = r+1
         return sum
+    
+    
+    def arrayPairSum(nums):
+    """
+    :type nums: List[int]
+    :rtype: int
+    """
+
+    nums.sort()
+    sumsi = 0
+    for i in range(int(len(nums)/2)):
+
+            sums = min(nums[i],nums[i+1])
+            sumsi = sumsi + sums
+            del nums[i+1]
+
+    return sumsi
