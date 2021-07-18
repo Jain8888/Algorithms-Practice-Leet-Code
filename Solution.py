@@ -228,3 +228,28 @@ class Solution(object):
             del nums[i+1]
 
     return sumsi
+
+
+    def plusOne(self, digits):
+        """
+        :type digits: List[int]
+        :rtype: List[int]
+        """
+        self.digits = digits
+        
+        # case when all is 9
+        if digits.count(9) == len(digits):
+            out = [1]
+            for i in range(len(digits)):
+                out.append(0)
+            return out
+        else:
+            last_digit = digits[-1]
+            i = -1
+            while last_digit == 9:
+                digits[i] = 0
+                last_digit = digits[i-1]
+                i = i-1
+
+            digits[i] = digits[i] + 1
+            return digits
