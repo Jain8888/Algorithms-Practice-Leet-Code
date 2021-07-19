@@ -253,3 +253,28 @@ class Solution(object):
 
             digits[i] = digits[i] + 1
             return digits
+        
+    def checkPerfectNumber(self, num):
+        """
+        :type num: int
+        :rtype: bool
+        """
+        self.num = num
+
+        div = [0]
+
+        if num%2 == 0 and str(num)[-1] != '0':
+            for i in range(1,int(round(num/2))+1):
+                if num%i == 0:
+                    div[0] = div[0] + i
+                    if div[0] > num:
+                        break
+
+            if div[0] == num:
+                out = True
+            else:
+                out = False
+        else:
+            out=False
+
+        return out     
