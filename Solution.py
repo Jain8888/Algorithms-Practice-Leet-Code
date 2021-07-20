@@ -290,3 +290,35 @@ class Solution(object):
         for i in nums:
             if nums.count(i) == 1:
                 return i
+            
+            
+            
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+   
+    def isBalanced(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        def recurse(node):
+            if node == None:
+                return (0,True)
+            
+            else:
+                left_height, left_balance = recurse(node.left)
+                right_height, right_balance = recurse(node.right)
+                
+                node_height = 1 + max(left_height, right_height)
+                if abs(left_height-right_height) <= 1 and left_balance and right_balance:
+                    node_balance = True
+                else:
+                    node_balance = False
+            
+                return node_height, node_balance
+        
+        return recurse(self.root)[1]     
