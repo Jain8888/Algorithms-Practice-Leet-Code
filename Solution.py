@@ -278,3 +278,15 @@ class Solution(object):
             out=False
 
         return out     
+    
+    
+    def singleNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        self.nums = nums
+        
+        for i in nums:
+            if nums.count(i) == 1:
+                return i
