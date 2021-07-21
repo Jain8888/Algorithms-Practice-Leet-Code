@@ -321,4 +321,33 @@ class Solution(object):
             
                 return node_height, node_balance
         
-        return recurse(self.root)[1]     
+        return recurse(self.root)[1]  
+    
+    
+    
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+    
+    def isSameTree(self, p, q):
+        """
+        :type p: TreeNode
+        :type q: TreeNode
+        :rtype: bool
+        """
+        def helper(node_1,node_2):
+            if node_1 == None and node_2 == None:
+                return True
+
+            
+            if (node_1 and node_2) and node_1.val == node_2.val:
+                left_check = helper(node_1.left,node_2.left)
+                right_check = helper(node_1.right, node_2.right)
+            
+                return left_check and right_check
+            else:
+                return False
+        return helper(p,q)
