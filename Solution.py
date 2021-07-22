@@ -351,3 +351,24 @@ class Solution(object):
             else:
                 return False
         return helper(p,q)
+    
+    
+    def maxDepth(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        
+        def helper(node):
+            height = 0
+
+            if node == None:
+                return height
+            
+            elif node != None:
+                left_h = helper(node.left) + 1
+                right_h = helper(node.right) + 1
+                height = max(left_h,right_h)
+                return height
+
+        return helper(root)
