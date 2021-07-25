@@ -372,3 +372,23 @@ class Solution(object):
                 return height
 
         return helper(root)
+    
+    
+    def generate(self, numRows):
+        """
+        :type numRows: int
+        :rtype: List[List[int]]
+        """
+        self.numRows = numRows
+        
+        out = [[1]]
+        for j in range(numRows-1):
+            trial = [1]
+            num_elements = len(out[-1])+1
+            elem = out[-1]
+            for i in range(num_elements-2):
+                new = elem[i] + elem[i+1]
+                trial.append(new)
+            trial.append(1)
+            out.append(trial)
+        return out
