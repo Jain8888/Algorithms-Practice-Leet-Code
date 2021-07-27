@@ -392,3 +392,15 @@ class Solution(object):
             trial.append(1)
             out.append(trial)
         return out
+    
+    
+    def majorityElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        self.nums = nums
+        
+        nums.sort()
+            
+        return nums[len(nums)/2]
