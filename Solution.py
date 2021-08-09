@@ -404,3 +404,36 @@ class Solution(object):
         nums.sort()
             
         return nums[len(nums)/2]
+    
+    def hasPathSum(self, root, targetSum):
+        """
+        :type root: TreeNode
+        :type targetSum: int
+        :rtype: bool
+        """
+        self.targetSum = targetSum
+        # add until both child are null
+        def helper(node):
+            if node:
+                if node.left == None and node.right == None:
+                    return node.val
+
+                if node.left:
+                    node.left.val = node.left.val + node.val
+                    check = helper(node.left)
+                    if check == targetSum:
+                        return check
+                    
+                if node.right:
+                    node.right.val = node.right.val + node.val
+                    check_1 = helper(node.right)
+                    if check_1 == targetSum:
+                        return check_1  
+            else:
+                b = 1.5
+                return b
+        trial = helper(root)
+        if trial == targetSum:
+            return True
+        else:
+            return False
