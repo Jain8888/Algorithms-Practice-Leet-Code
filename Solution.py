@@ -437,3 +437,21 @@ class Solution(object):
             return True
         else:
             return False
+        
+        
+    def romanToInt(self, s: str) -> int:
+        roman_dict = {'I':1, 'V':5, 'X':10, 'L':50, 'C':100, 'D':500, 'M':1000}
+
+        # problematic items - IV IX XL XC CD CM
+        prob_items_dict = {'IV':4, 'IX':9, 'XL':40, 'XC':90, 'CD':400, 'CM':900}
+
+        s_copy = s
+        sum= 0
+        for key,value in prob_items_dict.items():
+            if key in s_copy:
+                s_copy = s_copy.replace(key,'') 
+                sum += value
+        for key in s_copy:
+                sum += roman_dict.get(key)
+        
+        return sum
